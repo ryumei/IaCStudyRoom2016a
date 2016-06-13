@@ -46,8 +46,34 @@ varant suspend / resume
 
 ## 演習環境を整える: AWS 編
 
-AWS console から
-:wq
+* AMI: Ubuntu Server 14.04 LTS (HVM), SSD Volume Type - ami-a21529cc
+* インスタンスタイプ: t2.micro
+* ユーザーデータ:
+```
+#!/bin/sh
+apt-get update -y
+apt-get install python-dev libffi-dev libssl-dev sshpass git -y
+curl -kL https://bootstrap.pypa.io/get-pip.py | python
+pip install ansible
+```
+* EBS: GP2, 8GiB
+* セキュリティグループ: TCP 8080 (Tomcat 用)
+
+作成されたら、ログインチェック。
+
+```
+$ ssh xxx.xxx.xxx.xxx -i IaCStudyRoom160614.pem -l ubuntu
+```
+
+### 作成した EC2 上で自分自身に SSH ログインできるようにしておく。
+
+作成したインスタンス上で、SSH 鍵認証ができるように鍵生成と、
+authorized_keys へ登録しておく。
+
+```
+$ ssh-keygen
+$ cat .ssh/id_rsa.pub >> .ssh/authorized_keys
+```
 
 
 ## 演習環境を整える: さくら編
