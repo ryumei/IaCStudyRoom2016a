@@ -1,0 +1,11 @@
+version: '2'
+
+services:
+  openjdk8:
+    build:
+      context: ./openjdk8
+      args:
+        http_proxy: ${HTTP_PROXY}
+        https_proxy: ${HTTPS_PROXY}
+        no_proxy: ${NO_PROXY}
+    image: local/openjdk8
