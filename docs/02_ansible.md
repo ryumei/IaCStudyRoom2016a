@@ -51,10 +51,6 @@ roles や include を使うと良いと思います。
 [Module Index](http://docs.ansible.com/ansible/modules_by_category.html) より辿れます。
 
 
-### Windows 
-
-
-
 ### どうして Oracle Java じゃないの？
 
 もちろん Oracle Java でも技術的には問題がありません。

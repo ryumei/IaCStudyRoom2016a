@@ -18,24 +18,19 @@ ubuntu/trusty64 を指定しています。
 $ vagrant up
 ```
 参考までに、box イメージのダウンロードから、
+手元の iMac (i3 3GHz, 2 cores, 8G RAM, 実効スループット 4Mbps) では、
 仮想マシンの起動まで、8 分ほどかかりました。
-iMac (i3 3GHz, 2 cores, 8G RAM, スループット 4Mbps)
-
 
 
 ```
 $ vagrant ssh
 ```
 
-
 ベースボックスは、
 [Atlas](https://atlas.hashicorp.com/boxes/search?provider=virtualbox)
 にリストアップされています。
 
-### 注意
-
-
-apt-get install ansible すると ansible 1.5.4 が入ってしまいます。
+注意！ ``apt-get install ansible`` すると ansible 1.5.4 が入ってしまいます。
 
 ### やり直すには？
 
@@ -59,7 +54,7 @@ pip install ansible
 * EBS: GP2, 8GiB
 * セキュリティグループ: TCP 8080 (Tomcat 用)
 
-作成されたら、ログインチェック。
+作成されたら、ログインできるか確認しましょう。
 
 ```
 $ ssh xxx.xxx.xxx.xxx -i IaCStudyRoom160614.pem -l ubuntu
@@ -67,8 +62,9 @@ $ ssh xxx.xxx.xxx.xxx -i IaCStudyRoom160614.pem -l ubuntu
 
 ### 作成した EC2 上で自分自身に SSH ログインできるようにしておく。
 
+
 作成したインスタンス上で、SSH 鍵認証ができるように鍵生成と、
-authorized_keys へ登録しておく。
+authorized_keys へ登録しておくと、便利です。
 
 ```
 $ ssh-keygen
@@ -78,11 +74,6 @@ $ cat .ssh/id_rsa.pub >> .ssh/authorized_keys
 
 ## 演習環境を整える: さくら編
 
-
-
-
-
-
-
+(準備中)
 
 
