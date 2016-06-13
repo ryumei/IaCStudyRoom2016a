@@ -1,0 +1,38 @@
+---
+# Install GitBucket on Tomcat7 with OpenJDK8
+- hosts: local
+  become: yes
+  become_user: root
+  vars:
+    - gitbucket_url: https://github.com/gitbucket/gitbucket/releases/download/4.1/gitbucket.war
+    - gitbucket_deploy_path: /var/lib/tomcat7/webapps/gitbucket.war
+
+  tasks:
+    - name: Add a repository for OpenJDK 8
+      command: add-apt-repository ppa:openjdk-r/ppa
+
+    - name: Run apt-get update
+      apt: update_cache=yes
+
+    - name: Install packages
+      apt: name={{ item }}
+      with_items:
+        - openjdk-8-jre
+        - tomcat7
+
+    - name: Force stop Tomcat
+      service: name=tomcat7 state=stopped
+
+    - name: Set JAVA_HOME for Tomcat7
+      lineinfile: dest=/etc/default/tomcat7
+                  regexp="^#?JAVA_HOME="
+                  line=JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre
+
+    - name: Start Tomcat
+      service: name=tomcat7 state=started
+
+    - name: Reset ownership
+      file: path=/usr/share/tomcat7 owner=tomcat7 group=tomcat7 recurse=yes
+
+    - name: Deploy a war from url
+      get_url: url={{ gitbucket_url }} dest={{ gitbucket_deploy_path }}
