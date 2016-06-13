@@ -14,8 +14,8 @@ services:
     build:
       context: ./tomcat7
     image: local/tomcat7
-    #ports:
-    #  - "8080:8080"
+    depends_on:
+      - openjdk8
 
   gitbucket:
     build:
@@ -23,4 +23,6 @@ services:
     image: local/gitbucket
     ports:
       - "8080:8080"
+    depends_on:
+      - tomcat7
 
