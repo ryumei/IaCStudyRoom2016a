@@ -9,3 +9,18 @@ services:
         https_proxy: ${HTTPS_PROXY}
         no_proxy: ${NO_PROXY}
     image: local/openjdk8
+
+  tomcat7:
+    build:
+      context: ./tomcat7
+    image: local/tomcat7
+    #ports:
+    #  - "8080:8080"
+
+  gitbucket:
+    build:
+      context: ./gitbucket
+    image: local/gitbucket
+    ports:
+      - "8080:8080"
+

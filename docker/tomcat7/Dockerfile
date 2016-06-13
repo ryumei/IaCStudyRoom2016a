@@ -1,7 +1,11 @@
-# https://hub.docker.com/_/tomcat/
+# See also https://hub.docker.com/_/tomcat/
 FROM local/openjdk8
 
 ENV CATALINA_HOME /usr/share/tomcat7
+ENV CATALINA_BASE /var/lib/tomcat7
+ENV CATALINA_TMPDIR $CATALINA_HOME/temp
+ENV JRE_HOME /usr/lib/jvm/java-8-openjdk-amd64
+ENV CLASSPATH $CATALINA_HOME/bin/bootstrap.jar:$CATALINA_HOME/bin/tomcat-juli.jar
 ENV PATH $CATALINA_HOME/bin:$PATH
 RUN mkdir -p "$CATALINA_HOME"
 WORKDIR $CATALINA_HOME
@@ -19,7 +23,6 @@ RUN apt-get update && \
     sed -e "s/^#*JAVA_HOME=.*$/JAVA_HOME=\/usr\/lib\/jvm\/java-8-openjdk-amd64/" /etc/default/tomcat7.bkup > /etc/default/tomcat7 && \
     rm /etc/default/tomcat7.bkup && \
     rm -rf /var/lib/apt/lists/*
-
 
 EXPOSE 8080
 CMD ["catalina.sh", "run"]
