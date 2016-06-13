@@ -22,6 +22,14 @@ $ docker-compose build
 
 と実行します (手元の環境で 10 分弱かかりました)。
 
+## gitbucket サービスの実行
+
+```
+$ docker run -p 8080:8080 local/gitbucket
+```
+
+### 接続先の確認
+
 docker-machine で起動したゲスト OS 上で
 Docker Engine のコンテナが稼働しています。
 コンテナの EXPOSE は、ゲスト OS に forward されているので、
@@ -33,13 +41,9 @@ NAME      ACTIVE   DRIVER       STATE     URL                         SWARM   DO
 default   *        virtualbox   Running   tcp://192.168.99.100:2376           v1.11.2
 ```
 
-この場合、 http://192.168.99.100:8080 で Tomcat にアクセスできます。
-
-## gitbucket サービスの実行
-
-```
-$ docker-compose run gitbucket
-```
+この場合、 http://192.168.99.100:8080/ で Tomcat にアクセスできます。
+Tomcat の起動が確認できたら、gitbucket
+http://192.168.99.100:8080/gitbucket/ を開いてみましょう。
 
 ## あれがしたい！
 
@@ -68,5 +72,12 @@ URL 欄に表示されます。
 
 ```
 $ docker images
+```
+
+### 稼働中のコンテナと転送ポートの一覧を確認する。
+
+
+```
+$ docker ls
 ```
 
