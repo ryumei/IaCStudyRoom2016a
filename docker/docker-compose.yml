@@ -28,11 +28,11 @@ services:
     volumes:
       - ./gitbucket/home:/root/.gitbucket
 
-  jenkins:
-    build:
-      context: ./jenkins
-    image: local/jenkins
-    ports:
-      - "49001:8080"
-    volumes:
-      - ./jenkins/home:/var/jenkins_home
+# jenkins:
+#   build:
+#     context: ./jenkins
+#   image: local/jenkins
+#   ports:
+#     - "49001:8080"
+#   volumes:
+#     - ./jenkins/home:/var/jenkins_home
