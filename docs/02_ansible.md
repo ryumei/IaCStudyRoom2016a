@@ -1,7 +1,10 @@
 IaC Study Room
 
-# ansible で GitBucket インストール
+# Ansible で GitBucket インストール
 
+Ansible を使って、Tomcat を導入し、
+[GitBucket](https://github.com/gitbucket/gitbucket)をデプロイするまでを
+自動化してみます。
 
 ## 接続チェック
 

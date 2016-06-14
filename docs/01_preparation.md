@@ -2,17 +2,17 @@ IaC Study Room
 
 # 準備: 演習環境を整える
 
-Ubuntu + Ansible を使える環境を
+Ubuntu + Ansible を使える環境を作ります。
 
 ## 演習環境を整える: Vagrant 編
 
 事前に
-* Vagrant
-* VirtualBox
+* [Vagrant(https://www.vagrantup.com/)
+* [VirtualBox](https://www.virtualbox.org/)
 をインストールしてください。
 
-ubuntu/trusty64 を指定しています。
-
+同梱した Vagrantfile では、
+box image として ubuntu/trusty64 を指定しています。
 
 ```
 $ vagrant up
@@ -36,8 +36,8 @@ $ vagrant ssh
 
 vagrant destroy で仮想マシンを削除し、再度 up しましょう。
 
-varant halt / resume
-varant suspend / resume
+* varant suspend / resume: 一時停止、再開
+* varant halt / up / reload: 再起動
 
 ## 演習環境を整える: AWS 編
 

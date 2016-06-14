@@ -2,6 +2,9 @@ IaC Study Room
 
 # Docker で GitBucket
 
+コンテナ上に、Tomcat を導入し、
+[GitBucket](https://github.com/gitbucket/gitbucket)をデプロイしてみます。
+
 Mac, Win では [Docker Toolbox](https://www.docker.com/products/docker-toolbox) を使うと便利です。
 
 以下の例では。
@@ -25,8 +28,14 @@ $ docker-compose build
 ## gitbucket サービスの実行
 
 ```
-$ docker run -p 8080:8080 local/gitbucket
+$ docker-compose up -d gitbucket
 ```
+もしくは
+```
+$ docker run -p 8080:8080 -d local/gitbucket
+```
+
+
 
 ### 接続先の確認
 
@@ -44,10 +53,14 @@ default   *        virtualbox   Running   tcp://192.168.99.100:2376           v1
 この場合、 http://192.168.99.100:8080/ で Tomcat にアクセスできます。
 Tomcat の起動が確認できたら、
 http://192.168.99.100:8080/gitbucket/ を開いてみましょう。
-
-Ubuntu など、直接 docker daemon を起動している場合は、
+なお、Ubuntu など、直接 docker daemon を起動している場合は、
 localhost に forward されています。
 
+GitBucket の初期アカウント情報は、
+[GitBucket](https://github.com/gitbucket/gitbucket) に記載されています。
+
+パブリッククラウド環境では
+必要な検証が終わったら、停止することを忘れずに。
 
 ## あれがしたい！
 
