@@ -42,8 +42,12 @@ default   *        virtualbox   Running   tcp://192.168.99.100:2376           v1
 ```
 
 この場合、 http://192.168.99.100:8080/ で Tomcat にアクセスできます。
-Tomcat の起動が確認できたら、gitbucket
+Tomcat の起動が確認できたら、
 http://192.168.99.100:8080/gitbucket/ を開いてみましょう。
+
+Ubuntu など、直接 docker daemon を起動している場合は、
+localhost に forward されています。
+
 
 ## あれがしたい！
 
@@ -81,3 +85,10 @@ $ docker images
 $ docker ls
 ```
 
+### コンソールログを stdout に出力させたくない。
+
+デタッチモード (``-d``) で起動します。
+
+```
+$ docker run -d -p 8080:8080 local/gitbucket
+```
