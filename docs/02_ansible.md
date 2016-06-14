@@ -8,8 +8,17 @@ Ansible を使って、Tomcat を導入し、
 
 ## 接続チェック
 
+playbooks ディレクトリに移動します。
+以下の例では、 /vagrant 下にマウントされていると仮定しています。
+
 ```
 $ cd /vagrant/playbooks
+```
+
+対象へ ansible の [ping モジュール](http://docs.ansible.com/ansible/ping_module.html) で疎通確認してみます
+(ICMP ping ではありません)。
+
+```
 $ ansible -m ping -i hosts.local localhost -k
 SSH password: 
 localhost | SUCCESS => {
@@ -20,10 +29,11 @@ localhost | SUCCESS => {
 
 ## Playbook の実行
 
-    # $ ansible-playbook -i hosts.local launch_gitbucket.yml -k
+    $ ansible-playbook -i hosts.local gitbucket.yml -k
 
 参考までに手元の Vagrant 環境では、3 分ほどかかりました。
 
+playbook の中身を確認しながら、あれこれ試してみましょう。
 
 ## あれがしたい！
 
@@ -53,14 +63,13 @@ roles や include を使うと良いと思います。
 それぞれのモジュールは、
 [Module Index](http://docs.ansible.com/ansible/modules_by_category.html) より辿れます。
 
-
 ### どうして Oracle Java じゃないの？
 
 もちろん Oracle Java でも技術的には問題がありません。
 しかし、ライセンス上グレーゾーンが残ると判断したので、
 この演習では、OpenJDK を使用しています。
 
-参考解説記事
+#### 参考記事
 
 * [InfoQ, Dockerコンテナ上でのJavaの実行はライセンス違反なのか？](https://www.infoq.com/jp/news/2016/04/docker-java)
-* 
+* [Oracle, Java SE 一般的なFAQ](http://www.oracle.com/technetwork/jp/java/javase/overview/faqs-jsp-315926-ja.html)

@@ -25,6 +25,9 @@ $ docker-compose build
 
 と実行します (手元の環境で 10 分弱かかりました)。
 
+docker-compose.yml と
+それぞれのイメージ構築が書かれている Dockerfile を確認してみましょう。
+
 ## gitbucket サービスの実行
 
 ```
