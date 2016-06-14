@@ -1,2 +1,4 @@
 *.retry
 .vagrant/
+docker/jenkins/home
+docker/gitbucket/home

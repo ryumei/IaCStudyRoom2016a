@@ -25,4 +25,14 @@ services:
       - "8080:8080"
     depends_on:
       - tomcat7
+    volumes:
+      - ./gitbucket/home:/root/.gitbucket
 
+  jenkins:
+    build:
+      context: ./jenkins
+    image: local/jenkins
+    ports:
+      - "49001:8080"
+    volumes:
+      - ./jenkins/home:/var/jenkins_home
