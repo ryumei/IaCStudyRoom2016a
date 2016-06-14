@@ -1,0 +1,18 @@
+---
+# Install docker-compose
+- name: Get version
+  command: uname -s
+  register: os_kernel_name
+
+- name: Get version
+  command: uname -m
+  register: os_machine
+
+- name: Get docker-compose
+  get_url:
+    url={{ compose_base_url }}/docker-compose-{{ os_kernel_name.stdout }}-{{ os_machine.stdout }}
+    dest={{ compose_target_path }}
+
+- name: Set permission
+  file: path={{ compose_target_path }} mode=755
+

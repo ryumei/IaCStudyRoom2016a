@@ -1,0 +1,4 @@
+---
+# vars for docker machine
+machine_base_url: https://github.com/docker/machine/releases/download/v0.7.0
+machine_target_path: /usr/local/bin/docker-machine

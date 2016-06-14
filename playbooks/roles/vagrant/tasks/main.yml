@@ -1,0 +1,4 @@
+---
+- name: apt update and install pkgs
+  apt: update_cache=yes name={{ item }}
+    with_items: "{{ pkgs }}"

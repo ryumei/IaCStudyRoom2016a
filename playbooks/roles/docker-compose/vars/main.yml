@@ -1,0 +1,4 @@
+---
+# vars for docker compose
+compose_base_url: https://github.com/docker/compose/releases/download/1.7.1
+compose_target_path: /usr/local/bin/docker-compose

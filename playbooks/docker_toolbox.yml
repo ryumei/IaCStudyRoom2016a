@@ -1,0 +1,10 @@
+---
+# Install docker on Ubuntu
+# https://docs.docker.com/engine/installation/linux/ubuntulinux/
+- hosts: local
+  become: yes
+  become_user: root
+  roles:
+    - docker-engine
+    - docker-compose
+    - docker-machine
