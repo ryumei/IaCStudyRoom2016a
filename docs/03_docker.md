@@ -108,3 +108,42 @@ $ docker ls
 ```
 $ docker run -d -p 8080:8080 local/gitbucket
 ```
+
+### proxy 経由で docker toolbox を利用する。
+
+docker client から、docker-machine へ ssh ログインする。
+
+```
+$ docker-macine ssh default
+```
+
+docker-machine 上の /var/lib/boot2docker/profile に
+HTTP_PROXY, HTTPS_PROXY, NO_PROXY の export を追記。
+
+```
+$ sudo vi /var/lib/boot2docker/profile
+```
+
+docker-machine 上で docker service を再起動。
+
+```
+$ sudo /etc/init.d/docker restart
+```
+
+以下、未検証。
+
+~/.docker/machines/default/config.json の
+HostOptions - EngineOptions - Env の配列に、追加。
+```
+{
+  "HostOptions": {
+    "EngineOptions": {
+      "Env": [
+        "HTTP_PROXY=http://proxy:port",
+        "HTTPS_PROXY=http://proxy:port",
+        "NO_PROXY=127.0.0.1,localhost,192.168.999.100"
+      ]'
+    }
+  }
+}
+```
