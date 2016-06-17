@@ -1,1 +1,1 @@
-COUCHDB_URL=http://database:5984/
+APP_CONF=app.cfg
