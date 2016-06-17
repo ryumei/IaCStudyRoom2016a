@@ -1,4 +1,7 @@
 *.retry
+*.pyc
 .vagrant/
 docker/jenkins/home
 docker/gitbucket/home
+docker/couchdb/data
+docker/couchdb/log

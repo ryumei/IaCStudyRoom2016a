@@ -1,0 +1,48 @@
+version: '2'
+
+services:
+  database:
+    build:
+      context: ./couchdb
+      args:
+        http_proxy: ${HTTP_PROXY}
+        https_proxy: ${HTTPS_PROXY}
+        no_proxy: ${NO_PROXY}
+    image: local/mis/couchdb
+    ports:
+      - "5984:5984"
+    volumes:
+      - "$PWD/couchdb/data:/usr/local/var/lib/couchdb"
+      - "$PWD/couchdb/conf:/usr/local/etc/couchdb/local.d"
+      - "$PWD/couchdb/log:/usr/local/var/log/couchdb"
+    networks:
+      internal:
+        aliases:
+          - couchdb
+          - db
+    
+  web:
+    build:
+      context: ./flask
+      args:
+        http_proxy: ${HTTP_PROXY}
+        https_proxy: ${HTTPS_PROXY}
+        no_proxy: ${NO_PROXY}
+    image: local/mis/flask
+    env_file: ./flask/.env
+    ports:
+      - "5000:5000"
+    command: python app.py
+    volumes:
+      - ./flask:/code
+    links:
+      - database
+    depends_on:
+      - database
+    networks:
+      internal:
+        aliases:
+          - web
+      
+networks:
+  internal:
