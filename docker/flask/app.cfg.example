@@ -1,5 +1,5 @@
 COUCHDB_URL = 'http://database:5984/'
-DB_NAME = 'sample_db2'
+DB_NAME = 'sample_db'
 FLASK_APP_USERNAME = 'admin'
 FLASK_APP_PASSWORD = 'default'
 DEBUG = True

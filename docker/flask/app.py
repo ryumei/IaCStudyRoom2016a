@@ -40,7 +40,6 @@ def show_entries():
     db = g.db
     return render_template("show_entries.html", entries=[db[id] for id in db])
 
-
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     error = None

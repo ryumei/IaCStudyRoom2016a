@@ -5,3 +5,4 @@ docker/jenkins/home
 docker/gitbucket/home
 docker/couchdb/data
 docker/couchdb/log
+docker/flask/app.cfg
