@@ -7,31 +7,33 @@ from hello import Hello
 app = Flask(__name__)
 app.config.from_envvar('APP_CONF')
 
-def connect_db():
+def init_db():
+    db = get_db(clear=True)    
+
+def get_db(clear=False):
     db_server = couchdb.Server(app.config['COUCHDB_URL'])
     db_name = app.config['DB_NAME']
     if db_name not in db_server:
         db_server.create(db_name)
+    elif clear:
+        db_server.delete(db_name)
     return db_server[db_name]
 
-def get_db():
+def connect_db():
     if not hasattr(g, 'db'):
-        g.db = connect_db()
-    return g.db
+        g.db = get_db()
 
 @app.before_request
 def before_request():
-    g.db = connect_db()
+    connect_db()
     
 @app.route('/add', methods=['POST'])
 def add_entry():
     if not session.get('logged_in'):
         abort(401)
-    db = get_db()
-    db.save(
-        {'title': request.form['title'],
-         'text': request.form['text']}
-    )
+    db = g.db
+    db.save({'title': request.form['title'],
+             'text':  request.form['text']})
     flash('New entry was successfully posted')
     return redirect(url_for('show_entries'))
 
