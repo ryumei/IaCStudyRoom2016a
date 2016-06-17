@@ -8,7 +8,7 @@ services:
         http_proxy: ${HTTP_PROXY}
         https_proxy: ${HTTPS_PROXY}
         no_proxy: ${NO_PROXY}
-    image: local/mis/couchdb
+    image: local/couchdb
     ports:
       - "5984:5984"
     volumes:
@@ -28,8 +28,8 @@ services:
         http_proxy: ${HTTP_PROXY}
         https_proxy: ${HTTPS_PROXY}
         no_proxy: ${NO_PROXY}
-    image: local/mis/flask
-    env_file: ./flask/.env
+    image: local/flask
+    env_file: ./flask/env
     ports:
       - "5000:5000"
     command: python app.py
