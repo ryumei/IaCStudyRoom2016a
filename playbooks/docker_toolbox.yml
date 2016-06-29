@@ -5,6 +5,9 @@
   become: yes
   become_user: root
   roles:
-    - docker-engine
+    - { role: docker-engine-Debian,
+        when: ansible_os_family == "Debian" }
+    - { role: docker-engine-RedHat,
+        when: ansible_os_family == "RedHat" }
     - docker-compose
     - docker-machine
