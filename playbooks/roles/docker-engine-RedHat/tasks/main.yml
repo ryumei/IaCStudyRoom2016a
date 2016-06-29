@@ -1,6 +1,6 @@
 # See also
 # https://docs.docker.com/engine/installation/linux/centos/
-# http://qiita.com/gillax/items/6f864e7c21c6a3e4173b
+# https://access.redhat.com/solutions/1378023
 - name: Update yum repo
   yum: name=* update_cache=yes
 
