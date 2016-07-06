@@ -1,3 +1,4 @@
 ---
 dependencies:
-  - { role: docker-engine }
+  - { role: docker-engine-Debian, when: ansible_os_family == "Debian" }
+  - { role: docker-engine-RedHat, when: ansible_os_family == "RedHat" }

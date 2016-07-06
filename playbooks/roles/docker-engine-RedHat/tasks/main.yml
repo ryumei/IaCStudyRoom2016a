@@ -1,0 +1,15 @@
+# See also
+# https://docs.docker.com/engine/installation/linux/centos/
+# https://access.redhat.com/solutions/1378023
+- name: Update yum repo
+  yum: name=* update_cache=yes
+
+- name: Put repofile
+  copy: src=docker.repo.{{ ansible_distribution_major_version }}
+        dest=/etc/yum.repos.d/docker.repo
+
+- name: Install docker-engine
+  yum: name=docker-engine update_cache=yes
+
+- name: Start the docker daemon
+  service: name=docker state=started
