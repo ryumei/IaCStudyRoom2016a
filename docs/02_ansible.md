@@ -46,6 +46,12 @@ SSH 鍵認証を利用しましょう。
 
 ``-K`` (大文字) オプションで指定できます。
 
+### 対象ホストがプロキシ内にいる
+
+environemnts に指定すると、ターゲット上にプロキシ設定を反映できます。
+
+参考: http://docs.ansible.com/ansible/playbooks_environment.html
+
 ### 条件分岐したいのだけれど
 
 register で結果を拾って、 when で分岐させるのがよろしいかと。
