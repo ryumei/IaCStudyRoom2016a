@@ -42,24 +42,6 @@ ansible playbook 化してあります。
 
 # 自習課題
 
-## gitbucket with Ansible
+* [Ansible 自習課題](playbooks/README.md)
+* [Docker 自習課題](docker/README.md)
 
-``playbooks`` ディレクトリ以下を利用します。
-
-## gitbucket on Docker
-
-``docker`` ディレクトリ以下を利用します。
-
-```
-$ cd docker
-$ docker-compose -f compose-gitbucket.yml build
-$ docker-compose -f compose-gitbucket.yml up -d
-```
-
-## flask app on Docker
-
-```
-$ cd docker
-$ docker-compose -f compose-flask.yml build
-$ docker-compose -f compose-flask.yml up -d
-```
