@@ -21,4 +21,10 @@ Vagrant.configure("2") do |config|
     curl -kL https://bootstrap.pypa.io/get-pip.py | python
     pip install ansible
   SHELL
+
+  #if Vagrant.has_plugin?("vagrant-proxyconf")
+  #  config.proxy.http = ""
+  #  config.proxy.https = ""
+  #  config.proxy.no_proxy = "localhost,127.0.0.1"
+  #end
 end
