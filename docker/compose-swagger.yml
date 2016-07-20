@@ -1,0 +1,22 @@
+#
+version: '2'
+
+services:
+  # http://swagger.io/swagger-editor/
+  swagger-editor:
+    image: swaggerapi/swagger-editor
+    ports:
+      - "8080:8080"
+  # http://swagger.io/swagger-ui/
+  swagger-ui:
+    build:
+      context: ./swagger-ui
+      args:
+        http_proxy: ${HTTP_PROXY}
+        https_proxy: ${HTTPS_PROXY}
+        no_proxy: ${NO_PROXY}
+    image: swagger-ui-builder
+    ports:
+      - "8088:8080"
+      
+
