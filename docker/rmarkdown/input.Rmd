@@ -1,0 +1,3 @@
+I counted `r sum(c(1,2,3))` blue cars on the highway.
+
+
