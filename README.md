@@ -5,6 +5,8 @@ Sample files for [IaC 勉強部屋](http://hfs.connpass.com/event/31879/).
 
 といった自習向け課題の資料です。
 
+このリポジトリを clone してお使いください。
+
 # 事前準備
 
 [Vagrant](https://www.vagrantup.com) が利用出来る前提で
@@ -13,7 +15,7 @@ Sample files for [IaC 勉強部屋](http://hfs.connpass.com/event/31879/).
 
 ## 自習用環境の構築
 
-Vagrant をインストールしたら、このディレクトリで
+Vagrant をインストールしたら、このリポジトリを clone したディレクトリで
 
     $ vagrant plugin install vagrant-vbguest
     $ vagrant up
@@ -23,7 +25,7 @@ Vagrant をインストールしたら、このディレクトリで
 Ansible を実行できる Ubuntu 環境が作成されます。
 
 なお、プロキシ環境下では ``vagrant-proxyconf`` プラグインを
-インストールしておくとゲスト OS へプロキシ設定が少し楽になります。
+インストールしておくとゲスト OS へのプロキシ設定が少し楽になります。
 
 ## docker コマンド群のインストール
 
