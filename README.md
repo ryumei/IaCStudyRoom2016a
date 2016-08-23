@@ -9,9 +9,11 @@ Sample files for [IaC 勉強部屋](http://hfs.connpass.com/event/31879/).
 
 # 事前準備
 
-[Vagrant](https://www.vagrantup.com) が利用出来る前提で
-資料を用意しています。
+[Vagrant](https://www.vagrantup.com) および　
+[VirtualBox](https://www.virtualbox.org/wiki/Downloads) を
+利用出来る前提で 資料を構成しています。
 事前のインストールをお願いします。
+
 
 ## 自習用環境の構築
 
