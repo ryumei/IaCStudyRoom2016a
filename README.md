@@ -14,6 +14,10 @@ Sample files for [IaC 勉強部屋](http://hfs.connpass.com/event/31879/).
 利用出来る前提で 資料を構成しています。
 事前のインストールをお願いします。
 
+ssh コマンド (クライアント) も必要です。
+Windows 上では Cygwin や MinGW、Git のバイナリに付属している ssh.exe を
+使ってください。
+
 Ubuntu 系だと ``apt-get install vagrant`` で virtualbox まで入るかも。
 RHEL/CentOS 系だと [こちら](http://qiita.com/Itomaki/items/9a6a314a853cdcd00f80) の記事が参考になるかもしれません。
 
