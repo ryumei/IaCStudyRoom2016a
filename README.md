@@ -1,11 +1,29 @@
-Sample files for [IaC 勉強部屋](http://hfs.connpass.com/event/31879/).
+(Japanese only)
+
+eLV 主催の [Hacker's Free Space](http://hfs.connpass.com/) の
+[IaC 勉強部屋](http://hfs.connpass.com/event/31879/) シリーズで
+使っている、自習用素材です。
+
+* インフラの自動化に興味がある、
+* Ansible や Docker を触ってみたい
+
+という方は、ぜひ使ってみてください。内容は、
 
 * Ansible を使って、Tomcat 上に gitbucket をデプロイする。
 * Docker コンテナ上に Tomcat を稼働させ、gitbucket をデプロイする。
 
-といった自習向け課題の資料です。
+といったお題と、回答例となっています。
 
-このリポジトリを clone してお使いください。
+# 自習課題
+
+* [Ansible 自習課題](playbooks/README.md)
+* [Docker 自習課題](docker/README.md)
+
+## 使い方
+
+このリポジトリを git clone してお使いください。
+
+以下の事前準備にも目を通してください。
 
 # 事前準備
 
@@ -50,8 +68,4 @@ ansible playbook 化してあります。
 
 以上で、自習用環境上で docker コマンド群が利用できるようになります。
 
-# 自習課題
-
-* [Ansible 自習課題](playbooks/README.md)
-* [Docker 自習課題](docker/README.md)
 
