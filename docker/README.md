@@ -17,6 +17,9 @@ $ docker-compose -f compose-gitbucket.yml build
 $ docker-compose -f compose-gitbucket.yml up -d
 ```
 
+http://localhost:8080/gitbucket へアクセスしてサービスが起動していれば成功です！
+
+
 ### flask app on Docker
 
 ```

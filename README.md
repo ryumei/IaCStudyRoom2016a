@@ -41,6 +41,8 @@ RHEL/CentOS 系だと [こちら](http://qiita.com/Itomaki/items/9a6a314a853cdcd
 
 ## 自習用環境の構築
 
+すでに docker や ansible 環境が構築済みの方は、飛ばしてかまいません。
+
 Vagrant をインストールしたら、このリポジトリを clone したディレクトリで
 
     $ vagrant plugin install vagrant-vbguest
