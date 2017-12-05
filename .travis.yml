@@ -2,7 +2,7 @@ language: python
 env:
   global:
     - ANSIBLE_HOST_KEY_CHECKING=False
-    - JAVA_OPTS=-Xmx2g
+    - JAVA_OPTS=-Xmx1g
 sudo: true
 python:
   - '2.7'
@@ -14,7 +14,9 @@ before_script:
 script:
   - ansible-playbook -i playbooks/hosts.local playbooks/gitbucket.yml
   - sudo /usr/share/tomcat7/bin/version.sh
-  - sudo CATALINA_BASE=/var/lib/tomcat7 /usr/share/tomcat7/bin/catalina.sh start
+  #- sudo CATALINA_BASE=/var/lib/tomcat7 /usr/share/tomcat7/bin/catalina.sh start
+  - sudo service tomcat7 start
+  - cat /var/lib/tomcat7/logs/catalina.out
   - py.test -v playbooks/test_gitbucket.py
 notifications:
   slack:
