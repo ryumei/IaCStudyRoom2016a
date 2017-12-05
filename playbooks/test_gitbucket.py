@@ -29,7 +29,7 @@ def test_gitbucket(host):
     app_dir = host.file("/var/lib/tomcat7/webapps/gitbucket")
     assert app_dir.exists
     assert app_dir.is_directory
-    assert app_dir.user = "tomcat7"
+    assert app_dir.user == "tomcat7"
     assert passwd.mode >= 0o600
 
     res = requests.get("http://localhost:{}/gitbucket".format(http_port))
