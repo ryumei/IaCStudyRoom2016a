@@ -37,11 +37,11 @@
         src: tomcat7-server.xml.j2
         backup: yes
 
-    - name: Start Tomcat
-      service: name=tomcat7 state=started
-
     - name: Reset ownership
       file: path=/usr/share/tomcat7 owner=tomcat7 group=tomcat7 recurse=yes
+
+    - name: Start Tomcat
+      service: name=tomcat7 state=started
 
     - name: Deploy a war from url
       get_url: url={{ gitbucket_url }} dest={{ gitbucket_deploy_path }}
