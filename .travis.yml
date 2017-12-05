@@ -16,7 +16,7 @@ script:
   - sudo /usr/share/tomcat7/bin/version.sh
   #- sudo CATALINA_BASE=/var/lib/tomcat7 /usr/share/tomcat7/bin/catalina.sh start
   - sudo service tomcat7 start
-  - cat /var/lib/tomcat7/logs/catalina.out
+  - sudo cat /var/lib/tomcat7/logs/catalina.out
   - py.test -v playbooks/test_gitbucket.py
 notifications:
   slack:
