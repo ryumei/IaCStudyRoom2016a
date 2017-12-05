@@ -12,8 +12,9 @@ install:
 before_script:
   - ansible --version
 script:
-  - ansible-playbook -vvvv -i playbooks/hosts.local playbooks/gitbucket.yml
-  - sudo service tomcat7 start
+  - ansible-playbook -i playbooks/hosts.local playbooks/gitbucket.yml
+  - sudo /usr/share/tomcat7/bin/version.sh
+  - sudo /usr/share/tomcat7/bin/catalina.sh start
   - py.test -v playbooks/test_gitbucket.py
 notifications:
   slack:
