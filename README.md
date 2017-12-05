@@ -1,16 +1,22 @@
+Infrastructure as Code 勉強部屋
+==========================================
+
+[![Build Status](https://travis-ci.org/ryumei/IaCStudyRoom2016a.svg?branch=master)](https://travis-ci.org/ryumei/IaCStudyRoom2016a)
+
 (Japanese only)
 
-eLV 主催の [Hacker's Free Space](http://hfs.connpass.com/) の
-[IaC 勉強部屋](http://hfs.connpass.com/event/31879/) シリーズで
-使っている、自習用素材です。
+[eLV](http://www.elv.tokyo) 主催の自習形式の IT 勉強会
+[Hacker's Free Space](http://hfs.connpass.com/) の
+[IaC 勉強部屋](http://hfs.connpass.com/event/31879/) シリーズの
+参考資料です。
 
 * インフラの自動化に興味がある、
 * Ansible や Docker を触ってみたい
 
-という方は、ぜひ使ってみてください。内容は、
+という方は、ご参考にしてみてください。 内容は、
 
-* Ansible を使って、Tomcat 上に gitbucket をデプロイする。
-* Docker コンテナ上に Tomcat を稼働させ、gitbucket をデプロイする。
+* Ansible を使って、Tomcat 上にウェブアプリをデプロイする。
+* Docker コンテナ上に Tomcat を稼働させ、ウェブアプリをデプロイする。
 
 といったお題と、回答例となっています。
 
