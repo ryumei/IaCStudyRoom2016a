@@ -1,4 +1,6 @@
 language: python
+env:
+  - ANSIBLE_HOST_KEY_CHECKING=False
 sudo: true
 python:
   - "2.7"
