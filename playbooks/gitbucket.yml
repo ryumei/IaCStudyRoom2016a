@@ -6,6 +6,7 @@
   vars:
     - gitbucket_url: https://github.com/gitbucket/gitbucket/releases/download/4.1/gitbucket.war
     - gitbucket_deploy_path: /var/lib/tomcat7/webapps/gitbucket.war
+    - tomcat_server_port: 8005
     - tomcat_http_port: 8080
     - tomcat_https_port: 8443
 
