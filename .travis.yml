@@ -5,15 +5,16 @@ env:
     - JAVA_OPTS=-Xmx1024m
 sudo: true
 python:
-- '2.7'
+  - '2.7'
 install:
-- pip install ansible testinfra requests
-- ssh-keygen -f $HOME/.ssh/id_rsa -t rsa -N '' && cat $HOME/.ssh/id_rsa.pub > $HOME/.ssh/authorized_keys
+  - pip install ansible testinfra requests
+  - ssh-keygen -f $HOME/.ssh/id_rsa -t rsa -N '' && cat $HOME/.ssh/id_rsa.pub > $HOME/.ssh/authorized_keys
 before_script:
-- ansible --version
+  - ansible --version
 script:
-- ansible-playbook -i playbooks/hosts.local playbooks/gitbucket.yml
-- py.test -v playbooks/test_gitbucket.py
+  - ansible-playbook -i playbooks/hosts.local playbooks/gitbucket.yml
+  - cat /var/log/tomcat7/catalina.out
+  - py.test -v playbooks/test_gitbucket.py
 notifications:
   slack:
     secure: XcjfBe+2ZuX9EQ6BIsC3jjenjX05DnPsxPwhIdI/AqlEpn2h0/PmhqGbQwSO02l0YEAQjAhaCzWvCuHjD952yTx4C6ms9GbvonhcnccZ+UhMhqe/d6FP6qzDmSu7q5ei5cyt9BFN9jn7xJkuL4kgaRjubm+TK91L8uoElGnZZSyxdabDG/d0vpK+BuFfi/2/IYoTpMKqhwJQ3TJvLjwZgG7rtR7SvfDXjEZVBuMIgf8aYpzCMhW5/BxwxfFEC7RPwb0vdLvnQI+rhiXW7lYs7fxt5TviOgu02s8jdnohZgUF4M64CDcmMz8XBkTTWenSfb0aO9k8ULpIgBLUMwloZZYWjwf6YrhHbZyiCF2i2ND3UmL8TMjvcKiljpE+0Kq0JWpeHh9nQeTYha2JFUwrWhsEQGEJ3bEppKxqziUmHFc3Yzb0Hp1ZSocslGx7lr65oT/j//RpkrLgq87F9XP/NNA05E8utojPon74/L5Zbie0a7S7zvbtLoA8WSCRXPXYIJaXpAN8sYamykJVraToeD61KarU1eE+/pmxurd/S/FhVPcB6LbgqG8AxmxQegQRXsJh8wc5xvrtJalnei1F7cjhSUNKsHsH45dPzd/uyfAungDJp2UA/LkZ4rJ2YA7gVGeXBkjhUK1I6fwGGy0HxyjgvLdD0IRDmBxm6oKoUww=
