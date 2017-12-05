@@ -1,0 +1,12 @@
+language: python
+sudo: true
+python:
+  - "2.7"
+install
+  - pip install ansible testinfra requests
+before_script:
+  - ansible --version
+script:
+  - ansible-playbook -i playbooks/hosts.local playbooks/gitbucket.yml
+  - py.test -v playbooks/test_gitbucket.py
+

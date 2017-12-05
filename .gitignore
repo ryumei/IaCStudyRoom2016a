@@ -1,5 +1,6 @@
 *.retry
 *.pyc
+Vagrantfile
 .vagrant/
 docker/jenkins/home
 docker/gitbucket/home

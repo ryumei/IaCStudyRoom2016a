@@ -41,10 +41,11 @@ RHEL/CentOS 系だと [こちら](http://qiita.com/Itomaki/items/9a6a314a853cdcd
 
 ## 自習用環境の構築
 
-すでに docker や ansible 環境が構築済みの方は、飛ばしてかまいません。
+**すでに docker や ansible 環境が構築済みの方は、飛ばしてかまいません。**
 
 Vagrant をインストールしたら、このリポジトリを clone したディレクトリで
 
+    $ cp Vagrantfile.sample Vagrantfile
     $ vagrant plugin install vagrant-vbguest
     $ vagrant up
 
@@ -63,10 +64,9 @@ $ VAGRANT_LOG=info vagrant up
 
 https://www.vagrantup.com/docs/other/debugging.html
 
-### [TroubleShooting] Ubuntu リポジトリに接続できない
+### [TroubleShooting] プロキシ環境下で、ゲスト OS からインターネットへ接続できない
 
-ゲスト OS のベースイメージが古く、
-正しいリポジトリを参照できていない場合、
+プロキシ環境下では、
 以下のようなメッセージが出て ``vagrant up`` が失敗することがあります。
 
 ```
@@ -76,7 +76,9 @@ https://www.vagrantup.com/docs/other/debugging.html
 ==> default: Err http://archive.ubuntu.com trusty InRelease
 ```
 
-``vagrant box update`` を試してみてください。
+``vagrant plugin install vagrant-proxyconf`` を実行して、
+プラグインをインストールし、
+Vagrantfile の config.proxy のあたりに、 proxy server を設定してみてください。
 
 ## docker コマンド群のインストール
 
