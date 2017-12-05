@@ -24,6 +24,11 @@ def test_tomcat_installed(host):
     assert res.status_code == 200
 
 def test_gitbucket(host):
+    war = host.file("/var/lib/tomcat7/webapps/gitbucket.war")
+    assert war.exists
+    app_dir = host.file("/var/lib/tomcat7/webapps/gitbucket")
+    assert app_dir.exists
+    assert app_dir.is_directory
     res = requests.get("http://localhost:{}/gitbucket".format(http_port))
     assert res.status_code == 200
     assert res.text.find("<title>GitBucket</title>") > 0
