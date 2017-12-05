@@ -1,6 +1,7 @@
 import pytest
 import requests
 import os
+import time
 
 http_port = os.environ.get("TOMCAT_HTTP_PORT", 8080)
 
@@ -23,6 +24,7 @@ def test_tomcat_installed(host):
     res = requests.get("http://localhost:{}/".format(http_port))
     assert res.status_code == 200
 
+
 def test_gitbucket(host):
     war = host.file("/var/lib/tomcat7/webapps/gitbucket.war")
     assert war.exists
@@ -32,6 +34,11 @@ def test_gitbucket(host):
     assert app_dir.user == "tomcat7"
     assert app_dir.mode >= 0o600
 
-    res = requests.get("http://localhost:{}/gitbucket".format(http_port))
-    assert res.status_code == 200
+    # NOTE: Waiting loop for Travis CI VM
+    for i in range(20):
+        res = requests.get("http://localhost:{}/gitbucket".format(http_port))
+        if res.status_code < 400:
+            break
+        time.sleep(3)
+
     assert res.text.find("<title>GitBucket</title>") > 0
