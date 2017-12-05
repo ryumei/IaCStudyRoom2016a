@@ -1,6 +1,4 @@
 ---
 # vars for docker-engine
-pkgs: ["apt-transport-https", "ca-certificates"]
-apt_key_server: "hkp://p80.pool.sks-keyservers.net:80"
-apt_key_hash: "58118E89F3A912897C070ADBF76221572C52609D"
-repo_file: docker.list.14_10
+pkgs: ["apt-transport-https", "ca-certificates", "curl", "software-properties-common"]
+apt_key_url: "https://download.docker.com/linux/ubuntu/gpg"

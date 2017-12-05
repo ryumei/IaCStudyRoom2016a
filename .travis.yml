@@ -12,8 +12,7 @@ install:
 before_script:
   - ansible --version
 script:
-  - ansible-playbook -i playbooks/hosts.local playbooks/gitbucket.yml
-  - cat /var/log/tomcat7/catalina.out
+  - ansible-playbook -vvv -i playbooks/hosts.local playbooks/gitbucket.yml
   - py.test -v playbooks/test_gitbucket.py
 notifications:
   slack:

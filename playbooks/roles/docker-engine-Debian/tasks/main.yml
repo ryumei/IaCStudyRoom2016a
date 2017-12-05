@@ -1,12 +1,6 @@
 ---
 # Install docker engine on Ubuntu
 # https://docs.docker.com/engine/installation/linux/ubuntulinux/
-- name: apt update and install pkgs
-  apt: update_cache=yes name={{ item }}
-  with_items: "{{ pkgs }}"
-- name: Add the new GPG key
-  command: |-
-    apt-key adv --keyserver "{{ apt_key_server }}" --recv-keys "{{ apt_key_hash }}"
 - name: Put repo doceker.list
   copy: src={{ repo_file }} dest=/etc/apt/sources.list.d/docker.list
 - name: apt update
@@ -15,7 +9,21 @@
   apt: purge=true name={{ item }}
   with_items:
     - lxc-docker
+    - docker
+    - docker-engine
+    - docker.io
   ignore_errors: true
+
+- name: apt update and install pkgs
+  apt: update_cache=yes name={{ item }}
+  with_items: "{{ pkgs }}"
+- name: apt update and install pkgs
+  apt: update_cache=yes name={{ item }}
+  with_items: "{{ pkgs }}"
+- name: Add the new GPG key
+  command: |-
+    curl -fsSL "{{ apt_key_url }}" | sudo apt-key add -
+
 - name: Verify that API is pulling from the right repository
   command: apt-cache policy docker-engine
 - name: Get version
@@ -24,9 +32,15 @@
 - name: apt update and install prerequisities
   apt: update_cache=yes name={{ item }}
   with_items:
-  - "linux-image-extra-{{ os_kernel_release.stdout }}"
-  - apparmor
-  - docker-engine
+    - "linux-image-extra-{{ os_kernel_release.stdout }}"
+    - "linux-image-extra-virtual"
+  when: ansible_distriburion_version == "14.04"
+
+- name: apt update and install prerequisities
+  apt: update_cache=yes name={{ item }}
+  with_items:
+    - apparmor
+    - docker-engine
 - name: Start the docker daemon
   service: name=docker state=started
 
