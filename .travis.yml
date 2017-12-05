@@ -2,7 +2,7 @@ language: python
 env:
   global:
     - ANSIBLE_HOST_KEY_CHECKING=False
-    - JAVA_OPTS=-Xmx1024m
+    - JAVA_OPTS=-Xmx2g
 sudo: true
 python:
   - '2.7'
@@ -12,7 +12,7 @@ install:
 before_script:
   - ansible --version
 script:
-  - ansible-playbook -vvv -i playbooks/hosts.local playbooks/gitbucket.yml
+  - ansible-playbook -vvvv -i playbooks/hosts.local playbooks/gitbucket.yml
   - py.test -v playbooks/test_gitbucket.py
 notifications:
   slack:

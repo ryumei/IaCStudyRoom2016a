@@ -1,8 +1,6 @@
 ---
 # Install docker engine on Ubuntu
 # https://docs.docker.com/engine/installation/linux/ubuntulinux/
-- name: Put repo doceker.list
-  copy: src={{ repo_file }} dest=/etc/apt/sources.list.d/docker.list
 - name: apt update
   apt: update_cache=yes
 - name: apt purge the old repo
@@ -21,11 +19,9 @@
   apt: update_cache=yes name={{ item }}
   with_items: "{{ pkgs }}"
 - name: Add the new GPG key
-  command: |-
-    curl -fsSL "{{ apt_key_url }}" | sudo apt-key add -
+  shell: |-
+    curl -fsSL "{{ apt_key_url }}" | apt-key add -
 
-- name: Verify that API is pulling from the right repository
-  command: apt-cache policy docker-engine
 - name: Get version
   command: uname -r
   register: os_kernel_release
@@ -39,8 +35,7 @@
 - name: apt update and install prerequisities
   apt: update_cache=yes name={{ item }}
   with_items:
-    - apparmor
-    - docker-engine
+    - docker-ce
 - name: Start the docker daemon
   service: name=docker state=started
 
