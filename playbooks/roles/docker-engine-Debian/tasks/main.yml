@@ -32,6 +32,13 @@
     - "linux-image-extra-virtual"
   when: ansible_distribution_release == "trusty"
 
+- name: Use stable repository
+  shell: |-
+    add-apt-repository \
+     "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+     $(lsb_release -cs) \
+     stable"
+
 - name: apt update and install prerequisities
   apt: update_cache=yes name={{ item }}
   with_items:

@@ -13,7 +13,7 @@ before_script:
   - ansible --version
 script:
   - ansible-playbook -vvvv -i playbooks/hosts.local playbooks/gitbucket.yml
-  - service tomcat7 start
+  - sudo service tomcat7 start
   - py.test -v playbooks/test_gitbucket.py
 notifications:
   slack:
