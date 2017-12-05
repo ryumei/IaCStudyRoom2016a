@@ -1,7 +1,8 @@
 language: python
 env:
-  - ANSIBLE_HOST_KEY_CHECKING=False
-  - JAVA_OPTS=-Xmx1024m
+  global:
+    - ANSIBLE_HOST_KEY_CHECKING=False
+    - JAVA_OPTS=-Xmx1024m
 sudo: true
 python:
 - '2.7'
