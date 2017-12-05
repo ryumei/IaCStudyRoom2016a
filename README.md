@@ -55,6 +55,29 @@ Ansible を実行できる Ubuntu 環境が作成されます。
 なお、プロキシ環境下では ``vagrant-proxyconf`` プラグインを
 インストールしておくとゲスト OS へのプロキシ設定が少し楽になります。
 
+### [TroubleShooting] Vagrant のログレベルを変更したい。
+
+```
+$ VAGRANT_LOG=info vagrant up
+```
+
+https://www.vagrantup.com/docs/other/debugging.html
+
+### [TroubleShooting] Ubuntu リポジトリに接続できない
+
+ゲスト OS のベースイメージが古く、
+正しいリポジトリを参照できていない場合、
+以下のようなメッセージが出て ``vagrant up`` が失敗することがあります。
+
+```
+==> default: Running provisioner: shell...
+    default: Running: inline script
+(中略)
+==> default: Err http://archive.ubuntu.com trusty InRelease
+```
+
+``vagrant box update`` を試してみてください。
+
 ## docker コマンド群のインストール
 
 自習用環境に docker-engine, docker-compose, docker-machine のインストールをします。
