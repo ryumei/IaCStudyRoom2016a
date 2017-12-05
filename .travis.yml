@@ -11,7 +11,7 @@ install:
 before_script:
   - ansible --version
 script:
-  - ansible-playbook -i playbooks/hosts.local playbooks/gitbucket.yml --extra-vars "tomcat_http_port=28080"
+  - ansible-playbook -i playbooks/hosts.local playbooks/gitbucket.yml --extra-vars "tomcat_http_port=28080" --extra-vars "tomcat_server_port=28005"
   - sudo /usr/share/tomcat7/bin/version.sh
   #- sudo CATALINA_BASE=/var/lib/tomcat7 /usr/share/tomcat7/bin/catalina.sh start
   - sudo service tomcat7 start
