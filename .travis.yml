@@ -2,7 +2,6 @@ language: python
 env:
   global:
     - ANSIBLE_HOST_KEY_CHECKING=False
-    - JAVA_OPTS=-Xmx1g
 sudo: true
 python:
   - '2.7'
@@ -12,7 +11,7 @@ install:
 before_script:
   - ansible --version
 script:
-  - ansible-playbook -i playbooks/hosts.local playbooks/gitbucket.yml
+  - ansible-playbook -i playbooks/hosts.local playbooks/gitbucket.yml --extra-vars "tomcat_http_port=28080"
   - sudo /usr/share/tomcat7/bin/version.sh
   #- sudo CATALINA_BASE=/var/lib/tomcat7 /usr/share/tomcat7/bin/catalina.sh start
   - sudo service tomcat7 start

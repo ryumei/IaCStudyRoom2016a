@@ -6,6 +6,8 @@
   vars:
     - gitbucket_url: https://github.com/gitbucket/gitbucket/releases/download/4.1/gitbucket.war
     - gitbucket_deploy_path: /var/lib/tomcat7/webapps/gitbucket.war
+    - tomcat_http_port: 8080
+    - tomcat_https_port: 8443
 
   tasks:
     - name: Add a repository for OpenJDK 8
@@ -27,6 +29,12 @@
       lineinfile: dest=/etc/default/tomcat7
                   regexp="^#?JAVA_HOME="
                   line=JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre
+
+    - name: Put config with tempalte
+      template:
+        dest: /etc/tomcat7/server.xml
+        src: tomcat7-server.xml.j2
+        backup: yes
 
     - name: Start Tomcat
       service: name=tomcat7 state=started
