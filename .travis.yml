@@ -9,6 +9,8 @@ install:
 - ssh-keygen -f $HOME/.ssh/id_rsa -t rsa -N '' && cat $HOME/.ssh/id_rsa.pub > $HOME/.ssh/authorized_keys
 before_script:
 - ansible --version
+- echo $JAVA_OPTS
+- export JAVA_OPTS=-Xmx512m
 script:
 - ansible-playbook -i playbooks/hosts.local playbooks/gitbucket.yml
 - py.test -v playbooks/test_gitbucket.py
