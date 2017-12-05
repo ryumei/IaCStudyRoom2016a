@@ -14,7 +14,7 @@ before_script:
   - ansible --version
 script:
   - ansible-playbook -i playbooks/hosts.local playbooks/gitbucket.yml --extra-vars "tomcat_http_port=$TOMCAT_HTTP_PORT" --extra-vars "tomcat_server_port=$TOMCAT_SERVER_PORT"
-  - service tomcat7 restart
+  - sudo service tomcat7 restart
   - py.test -v playbooks/test_gitbucket.py
 notifications:
   slack:
