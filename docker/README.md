@@ -7,7 +7,7 @@ Tomcat に Web app (例 gitbucket) をデプロイし稼働させるまでを
 
 ## 回答編
 
-``docker`` ディレクトリ以下を利用します。
+この ``docker`` ディレクトリ以下を利用します。
 
 ### gitbucket
 
@@ -28,3 +28,4 @@ $ docker-compose -f compose-flask.yml build
 $ docker-compose -f compose-flask.yml up -d
 ```
 
+この他にもいくつか compose ファイルを用意しています。

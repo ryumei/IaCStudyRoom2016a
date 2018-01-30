@@ -1,0 +1,9 @@
+version: '2'
+services:
+  splunk:
+    environment:
+      - SPLUNK_START_ARGS=--accept-license
+      - SPLUNK_USER=root
+    image: "splunk/splunk"
+    ports:
+      - "8000:8000"

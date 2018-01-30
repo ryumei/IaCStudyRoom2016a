@@ -35,10 +35,11 @@ def test_gitbucket(host):
     assert app_dir.mode >= 0o600
 
     # NOTE: Waiting loop for Travis CI VM
-    for i in range(20):
+    for i in range(60):
         res = requests.get("http://localhost:{}/gitbucket".format(http_port))
         if res.status_code < 400:
             break
         time.sleep(3)
 
+    assert res.status_code == 200
     assert res.text.find("<title>GitBucket</title>") > 0
