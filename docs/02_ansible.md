@@ -79,3 +79,29 @@ roles や include を使うと良いと思います。
 
 * [InfoQ, Dockerコンテナ上でのJavaの実行はライセンス違反なのか？](https://www.infoq.com/jp/news/2016/04/docker-java)
 * [Oracle, Java SE 一般的なFAQ](http://www.oracle.com/technetwork/jp/java/javase/overview/faqs-jsp-315926-ja.html)
+
+
+## 自分でインストールしたい！
+
+Python 3
+
+```
+$ python3 -mvenv ansible_env
+$ source ansible_env/bin/activate
+$ pip install ansible
+```
+
+### Python2.7 (virtualenv) on CentOS 7 の場合
+
+```
+$ sudo yum install openssl-devel libffi-devel
+$ sudo yum install python-virtualenv
+$ virtualenv ansible_env
+$ source ansible_env/bin/activate
+$ pip install --upgrade setuptools
+$ pip install ansible
+```
+
+openssl-devel、libffi-devel を入れておかないと、certifi や ffi で失敗します。
+setuptools の upgrade を行わないと、cryptography で失敗します。
+
