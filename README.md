@@ -62,6 +62,28 @@ Ansible を実行できる Ubuntu 環境が作成されます。
 なお、プロキシ環境下では ``vagrant-proxyconf`` プラグインを
 インストールしておくとゲスト OS へのプロキシ設定が少し楽になります。
 
+### [TroubleShooting] Windows10 で Virtualbox で起動しようとすると、SYSTEM_SERVICE_EXCEPTION が出てしまう。
+
+Hyper-V 機能を無効化し、VirtualBox を使うか、
+Hyper-V プロバイダで VM を起動するか。
+
+* http://nanoappli.com/blog/archives/8114
+* https://qiita.com/nibral/items/94de6b9787e2aface2aa
+
+### [TroubleShooting] Windows で Virtualbox Provider で VM を起動しようとすると、rsync でエラーになる。
+
+``rsync: sned_files failed to open "〜": Premission denied (13)``
+
+``rsync__args`` (アンダースコア２つ) を指定する。
+
+```ruby
+  config.vm.synced_folder ".", "/vagrant", type: "rsync",
+    rsync__args: ["--chmod=ugo=rwX","--verbose", "--archive", "--delete", "-z"]
+```
+
+* https://github.com/hashicorp/vagrant/issues/3256
+* https://www.vagrantup.com/docs/synced-folders/rsync.html
+
 ### [TroubleShooting] Vagrant のログレベルを変更したい。
 
 ```
