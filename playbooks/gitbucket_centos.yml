@@ -1,0 +1,36 @@
+---
+# Install GitBucket on Tomcat7 with OpenJDK8
+- hosts: gitbucket
+  become: yes
+  become_user: root
+  vars:
+    - gitbucket_url: https://github.com/gitbucket/gitbucket/releases/download/4.1/gitbucket.war
+    - gitbucket_deploy_path: /var/lib/tomcat6/webapps/gitbucket.war
+    - tomcat_server_port: 8005
+    - tomcat_http_port: 8080
+    - tomcat_https_port: 8443
+
+  tasks:
+    - name: Install packages
+      yum: name={{ item }}
+      with_items:
+        - java-1.8.0-openjdk-headless
+        - tomcat6
+
+    - name: Force stop Tomcat
+      service: name=tomcat6 state=stopped
+
+    - name: Put config with tempalte
+      template:
+        dest: /etc/tomcat6/server.xml
+        src: tomcat6-server.xml.j2
+        backup: yes
+
+    - name: Reset ownership
+      file: path=/usr/share/tomcat6 owner=tomcat group=tomcat recurse=yes
+
+    - name: Start Tomcat
+      service: name=tomcat6 state=started
+
+    - name: Deploy a war from url
+      get_url: url={{ gitbucket_url }} dest={{ gitbucket_deploy_path }}
