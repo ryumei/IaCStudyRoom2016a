@@ -72,7 +72,7 @@ Hyper-V プロバイダで VM を起動するか。
 
 ### [TroubleShooting] Windows で Virtualbox Provider で VM を起動しようとすると、rsync でエラーになる。
 
-``rsync: sned_files failed to open "〜": Premission denied (13)``
+``rsync: send_files failed to open "〜": Premission denied (13)``
 
 ``rsync__args`` (アンダースコア２つ) を指定する。
 
