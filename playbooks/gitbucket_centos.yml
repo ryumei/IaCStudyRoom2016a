@@ -1,5 +1,5 @@
 ---
-# Install GitBucket on Tomcat7 with OpenJDK8
+# Install GitBucket on Tomcat6/CentOS with OpenJDK8
 - hosts: gitbucket
   become: yes
   become_user: root
