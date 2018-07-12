@@ -1,0 +1,22 @@
+version: '2'
+
+services:
+  c9:
+    build:
+      context: ./c9
+      args:
+        http_proxy: ${HTTP_PROXY}
+        https_proxy: ${HTTPS_PROXY}
+        no_proxy: ${NO_PROXY}
+    image: local/c9
+    environment:
+      http_proxy: ${HTTP_PROXY}
+      https_proxy: ${HTTPS_PROXY}
+    restart: always
+    ports:
+      - 30080:80
+      - 4000:4000
+    volumes:
+      - ./c9/workspace:/workspace
+      - /etc/localtime:/etc/localtime:ro
+    command: node /cloud9/server.js --port 80 -w /workspace -l 0.0.0.0 --auth user:password
