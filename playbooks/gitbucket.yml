@@ -12,7 +12,7 @@
 
   tasks:
     - name: Add a repository for OpenJDK 8
-      command: add-apt-repository ppa:openjdk-r/ppa
+      command: add-apt-repository -y ppa:openjdk-r/ppa
 
     - name: Run apt-get update
       apt: update_cache=yes
